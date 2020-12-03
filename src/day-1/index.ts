@@ -1,4 +1,4 @@
-import { stopwatch } from "../stopwatch";
+import { runMeasured } from "../utils";
 import { input } from "./input";
 
 const desiredResult = 2020;
@@ -37,13 +37,6 @@ export function day1_step2() {
 }
 
 export function day1() {
-  console.log("Day 1 - Step 1: ");
-  let sw = stopwatch();
-  day1_step1();
-  console.log(sw());
-
-  sw = stopwatch();
-  console.log("Day 1 - Step 2: ");
-  day1_step2();
-  console.log(sw());
+  runMeasured("Day 1 - Step 1:", day1_step1);
+  runMeasured("Day 1 - Step 2:", day1_step2);
 }

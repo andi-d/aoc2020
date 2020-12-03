@@ -1,4 +1,4 @@
-import { stopwatch } from "../stopwatch";
+import { runMeasured } from "../utils";
 import { input as rawInput } from "./input";
 
 interface Line {
@@ -37,8 +37,8 @@ function isLineValid_step1(line: Line): boolean {
 
 function isLineValid_step2(line: Line): boolean {
   return (
-    ((line.password[line.lowerBound - 1] === line.letter) as any) !==
-    ((line.password[line.upperBound - 1] === line.letter) as any)
+    (line.password[line.lowerBound - 1] === line.letter) !==
+    (line.password[line.upperBound - 1] === line.letter)
   );
 }
 
@@ -55,13 +55,6 @@ function day2_step2() {
 }
 
 export function day2() {
-  let sw = stopwatch();
-  console.log("Day 2 - Step 1:");
-  day2_step1();
-  console.log(sw());
-
-  sw = stopwatch();
-  console.log("Day 2 - Step 2:");
-  day2_step2();
-  console.log(sw());
+  runMeasured("Day 2 - Step 1:", day2_step1);
+  runMeasured("Day 2 - Step 2:", day2_step2);
 }
